@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Investimentos</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Investimentos</h1>
+      </div>
+      <div class="chart-container">
+        <canvas id="chartInvestimentos"></canvas>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Valor Atual</th>
+            <th>Retorno</th>
+            <th>Data</th>
+          </tr>
+        </thead>
+        <tbody id="investimentosTableBody">
+          <!-- Investimentos data will be inserted here -->
+        </tbody>
+      </table>
+      <button class="button" onclick="addInvestimento()">Adicionar Investimento</button>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
+</html>

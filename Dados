@@ -1,0 +1,103 @@
+function register() {
+  const nomeCompleto = document.getElementById("nomeCompleto").value;
+  const email = document.getElementById("email").value;
+  const senha = document.getElementById("senha").value;
+  const confirmarSenha = document.getElementById("confirmarSenha").value;
+
+  if (senha !== confirmarSenha) {
+    alert("Senhas não coincidem");
+    return;
+  }
+
+  fetch("/php/register.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ nomeCompleto: nomeCompleto, email: email, senha: senha }),
+  })
+    .then((response) => response.text())
+    .then((data) => {
+      alert(data);
+    });
+}
+
+function login() {
+  const email = document.getElementById("email").value;
+  const senha = document.getElementById("senha").value;
+
+  fetch("/php/login.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email: email, senha: senha }),
+  })
+    .then((response) => response.text())
+    .then((data) => {
+      if (data === "Login successful") {
+        window.location.href = "/index.html";
+      } else {
+        alert(data);
+      }
+    });
+}
+
+function addGasto() {
+  const descricao = prompt("Descrição do Gasto:");
+  const valor = prompt("Valor do Gasto:");
+  const data = prompt("Data do Gasto (YYYY-MM-DD):");
+  const idConta = prompt("ID da Conta:");
+  const idCategoria = prompt("ID da Categoria:");
+
+  fetch("/php/add_gasto.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ descricao: descricao, valor: valor, data: data, idConta: idConta, idCategoria: idCategoria }),
+  })
+    .then((response) => response.text())
+    .then((data) => {
+      alert(data);
+    });
+}
+
+function addEconomia() {
+  const descricao = prompt("Descrição da Economia:");
+  const valor = prompt("Valor da Economia:");
+  const data = prompt("Data da Economia (YYYY-MM-DD):");
+  const usuario_email = prompt("Email do Usuário:");
+
+  fetch("/php/add_economia.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ descricao: descricao, valor: valor, data: data, usuario_email: usuario_email }),
+  })
+    .then((response) => response.text())
+    .then((data) => {
+      alert(data);
+    });
+}
+
+function addInvestimento() {
+  const nome = prompt("Nome do Investimento:");
+  const valor_atual = prompt("Valor Atual do Investimento:");
+  const retorno = prompt("Retorno do Investimento:");
+  const data = prompt("Data do Investimento (YYYY-MM-DD):");
+  const usuario_email = prompt("Email do Usuário:");
+
+  fetch("/php/add_investimento.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ nome: nome, valor_atual: valor_atual, retorno: retorno, data: data, usuario_email: usuario_email }),
+  })
+    .then((response) => response.text())
+    .then((data) => {
+      alert(data);
+    });
+}

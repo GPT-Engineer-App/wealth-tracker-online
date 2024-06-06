@@ -1,0 +1,17 @@
+/projetoFinanceiro
+    /css
+        - style.css
+    /js
+        - script.js
+    /php
+        - db.php
+        - register.php
+        - login.php
+        - add_gasto.php
+        - add_economia.php
+        - add_investimento.php
+        - fetch_data.php
+    - index.html
+    - gastos.html
+    - economias.html
+    - investimentos.html
